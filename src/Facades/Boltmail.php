@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static App\Boltmail\Boltmail deleteList(string $listId)
  * @method static App\Boltmail\Boltmail getSubscribers(string $listId)
  * @method static App\Boltmail\Boltmail getSubscriber(string $listId, $string $subscriberId)
+ * @method static App\Boltmail\Boltmail getSubscriberIdByEmail(string $listId, $string $email)
+ * @method static App\Boltmail\Boltmail getSubscriberByEmail(string $listId, $string $email)
  * @method static App\Boltmail\Boltmail addSubscriber(string $listId, array $subscriber)
  * @method static App\Boltmail\Boltmail addSubscribers(string $listId, array $subscribers)
  * @method static App\Boltmail\Boltmail updateSubscriber(string $listId, $string $subscriberId, array $params)

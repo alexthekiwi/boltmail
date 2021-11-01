@@ -206,4 +206,31 @@ class Boltmail
     {
         return $this->call("/lists/{$listId}/subscribers/{$subscriberId}", [], 'DELETE');
     }
+
+    /**
+     * Gets a subscribers ID by email
+     */
+    public function getSubscriberIdByEmail(string $listId, string $email)
+    {
+        return $this->call("/lists/{$listId}/subscribers/search-by-email?EMAIL={$email}");
+    }
+
+    /**
+     * Gets a subscribers details by email
+     */
+    public function getSubscriberByEmail(string $listId, string $email)
+    {
+        try {
+            $res = $this->getSubscriberIdByEmail($listId, $email);
+
+            if (gettype($res) === 'array') {
+                throw new \Exception("Couldn\'t find subscriber", 404);
+            }
+
+            $subscriberId = $res->data->subscriber_uid;
+            return $this->getSubscriber($listId, $subscriberId);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
